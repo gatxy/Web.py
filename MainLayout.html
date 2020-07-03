@@ -1,0 +1,43 @@
+$def with (page)
+$var css: static/css/bootstrap.min.css
+$var scss: static/scss/bootstrap-material-design.scss
+$var js: static/js/jquery.min.js static/js/bootstrap.min.js static/js/ripples.js static/js/scripty.js
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Code Wizard</title>
+
+    $if self.css:
+        $for style in self.css.split():
+            <link rel="stylesheet" href="$style" />
+
+</head>
+<body>
+    <div id="app">
+        <div class="navbar navbar-info navbar-fixed-top">
+             <div class="navbar-header">
+                <a class="navbar-brand">Code Wizard</a>
+        </div>
+
+        <ul class="nav navbar-nav">
+            <li><a class="waves-effect" href="/">Home Feed<div class="ripple-container"></div></a></li>
+            <li><a href="/discover">Discover<div class="ripple_container"></div></a></li>
+            <li><a href="/profile">Profile<div class="ripple_container"></div></a></li>
+            <li><a href="/settings">Settings<div class="ripple_container"></div></a></li>
+        </ul>
+
+            <div class="pull-right">
+                <a href="/register" class="btn btn-raised btn-default waves-effect">Register</a>&nbsp; &nbsp;
+            </div>
+        </div>
+        <br /><br /><br />
+        $:page
+    </div>
+
+    $if self.js:
+        $for script in self.js.split():
+            <script src="$script"></script>
+
+</body>
+</html>
